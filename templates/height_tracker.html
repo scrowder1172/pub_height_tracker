@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Height Tracker</title>
+    <link rel="stylesheet" href="../static/main.css">
+</head>
+<body style="font-family:Verdana;">
+
+<div style="background-color:#f1f1f1;padding:15px;">
+  <h1>Height Tracker</h1>
+  <h3>Add your height to the list and find out how the average height of all respondents</h3>
+</div>
+
+<div style="overflow:auto">
+<div class="main">
+    <form action="/" method="post">
+        {{height_tracker_form_html.name.label}} {{height_tracker_form_html.name}} <br>
+        {{height_tracker_form_html.height.label}} {{height_tracker_form_html.height}}<br>
+        {{height_tracker_form_html.button}}
+        <br>
+        {% if result==True %}
+        <h3>{{average_height}}</h3>
+        <h3>{{respondents}}</h3>
+        <h3>{{error_message}}</h3>
+        {% endif %}
+    </form>
+
+  </div>
+</div>
+</body>
+</html>
+<body>
+</div>
+</body>
+</html>
