@@ -1,6 +1,6 @@
 Single page application to track heights entered. Submission will return average heights and number of respondents.
 
-Backend: "in memory" sqlite database
+Backend: local sqlite database
 Optional postgres file included. Small changes to height_tracker.py will be required due to the differences in how 
 sqlite and postgres handle parameters. Additionally, the postgres file references a PATH variable DATABASE_URL which 
 would point to the postgres instance and could contain credentials in the connection string. Another option would be to 
