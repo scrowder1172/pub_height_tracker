@@ -1,6 +1,9 @@
 import sys
 import psycopg2
 import os
+import types
+from typing import cast
+import inspect
 
 
 class PgDatabase:
@@ -21,6 +24,8 @@ class PgDatabase:
         :param parm: provide parameters for SQL statement as list
         :return: report back if command fails or succeeds
         """
+        # function_name = cast(types.FrameType, inspect.currentframe()).f_code.co_name
+        # print(f"Starting: {function_name}")
         self._connect()
         result = False
         try:
@@ -42,6 +47,8 @@ class PgDatabase:
         :param parm: provide parameters for SQL statement as list
         :return: results from query
         """
+        # function_name = cast(types.FrameType, inspect.currentframe()).f_code.co_name
+        # print(f"Starting: {function_name}")
         self._connect()
         search_results = ""
         try:
@@ -67,6 +74,8 @@ class PgDatabase:
         :param parm: provide parameters for SQL statement as list
         :return: results from query
         """
+        # function_name = cast(types.FrameType, inspect.currentframe()).f_code.co_name
+        # print(f"Starting: {function_name}")
         self._connect()
         search_results = ""
         try:
@@ -87,6 +96,8 @@ class PgDatabase:
 
 
 if __name__ == '__main__':
+    """Test cases to validate database queries execute as expected
+    """
     db = PgDatabase()
     insert_sql = "insert into height_tracker(added_by,height) values(%s, %s)"
     inputs = ['Eric', 61]

@@ -1,21 +1,26 @@
 import sqlite3
 import sys
 import traceback
+import types
+from typing import cast
+import inspect
 
 
 class Database:
 
     def __init__(self):
-        """Initialize the database in memory
+        """Database will be created in root directory if it doesn't exist
         """
         self.database_location = 'height_tracker.db'
         self.db = sqlite3.connect(self.database_location)
         self._create_table()
 
     def _create_table(self):
-        """Create the HEIGHT_TRACKER table in the database
+        """Create the HEIGHT_TRACKER table
         Error handling has been added to track SQL errors
         """
+        # function_name = cast(types.FrameType, inspect.currentframe()).f_code.co_name
+        # print(f"Starting: {function_name}")
         try:
             self.db.execute("CREATE TABLE height_tracker (added_by text, height int); ")
         except sqlite3.Error as er:
@@ -118,6 +123,8 @@ class Database:
 
 
 if __name__ == '__main__':
+    """Test cases to validate database queries execute as expected
+    """
     db = Database()
     insert_sql = "insert into height_tracker(added_by,height) values(?, ?)"
     inputs = ['Eric', 61]

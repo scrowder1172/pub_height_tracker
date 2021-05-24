@@ -2,6 +2,9 @@ from flask import Flask, render_template, request
 from flask.views import MethodView
 from wtforms import Form, StringField, SubmitField
 from wtforms.validators import InputRequired, Length, NumberRange
+import types
+from typing import cast
+import inspect
 
 from height_tracker import HeightTracker
 
@@ -11,10 +14,14 @@ app = Flask(__name__)
 class HeightTrackerPage(MethodView):
 
     def get(self):
+        # function_name = cast(types.FrameType, inspect.currentframe()).f_code.co_name
+        # print(f"Starting: {function_name}")
         height_tracker_form = HeightTrackerForm()
         return render_template('height_tracker.html', height_tracker_form_html=height_tracker_form)
 
     def post(self):
+        # function_name = cast(types.FrameType, inspect.currentframe()).f_code.co_name
+        # print(f"Starting: {function_name}")
         height_tracker_form = HeightTrackerForm(request.form)
         height_tracker = HeightTracker()
         result = height_tracker.add_height(name=height_tracker_form.name.data,
