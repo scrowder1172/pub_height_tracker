@@ -14,7 +14,7 @@ string. Another option would be to leverage a database.ini file with the postgre
 be taken to avoid using the same file across multiple environments or publishing the file as it could contain 
 credentials.</p>
 
-<p>Method check: the two lines below can be used during debugging to check where the code is
+<p>The two lines below can be used during debugging to check where the code is
 during execution.
 <br>Source: https://stackoverflow.com/questions/251464/how-to-get-a-function-name-as-a-string
 
